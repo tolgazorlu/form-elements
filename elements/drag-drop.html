@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drag and Drop</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+
+<body>
+  <!-- Drag and Drop -->
+  <br>
+  <section>
+
+    <div class="container my-4">
+
+      <h2>Drag and Drop</h2>
+
+      <hr class="my-4">
+
+      <p>Drag blue box into the second field.</p>
+
+      <div id="container1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div draggable="true" ondragstart="drag(event)" id="item1" class="item"></div>
+      </div>
+
+      <div id="container2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    </div>
+  </section>
+  <script>
+    function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("childID", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("childID");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

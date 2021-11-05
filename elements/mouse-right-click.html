@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Right Click</title><link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+</head>
+
+<body>
+    <!-- Select List -->
+
+    <section>
+
+        <br>
+        <div class="container">
+
+            <h2>Mouse Right Click</h2>
+
+            <hr class="my-4">
+
+            <button id="button" oncontextmenu="event.preventDefault();">Click here with your mouse...</button>
+
+            <p id="log"></p>
+
+            <br>
+        </div>
+    </section>
+    <script>
+        let button = document.querySelector('#button');
+        let log = document.querySelector('#log');
+        button.addEventListener('mouseup', logMouseButton);
+
+        function logMouseButton(e) {
+            if (typeof e === 'object') {
+                switch (e.button) {
+                    case 0:
+                        log.textContent = 'Left button clicked.';
+                        break;
+                    case 1:
+                        log.textContent = 'Middle button clicked.';
+                        break;
+                    case 2:
+                        log.textContent = 'Right button clicked.';
+                        break;
+                    default:
+                        log.textContent = `Unknown button code: ${e.button}`;
+                }
+            }
+        }
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

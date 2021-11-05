@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Load More</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+  <style>
+    .list-element {
+        display: none;
+    }
+    .list .list-element:nth-child(1) {
+        display: block;
+    }
+    .list .list-element:nth-child(2) {
+        display: block;
+    }
+    </style>
+</head>
+
+<body>
+  <!-- Alert -->
+
+  <section>
+
+    <div class="container my-4">
+
+      <h2>Load More</h2>
+
+      <hr class="my-4">
+
+      <p>Press Load More button for show other list elements.</p>
+
+      <div class="list">
+	    <div class="list-element">Product 1</div>
+	    <div class="list-element">Product 2</div>
+	    <div class="list-element">Product 3</div>
+	    <div class="list-element">Product 4</div>
+	    <div class="list-element">Product 5</div>
+	    <div class="list-element">Product 6</div>
+	</div>
+
+	<!-- Load More Button -->
+	<button id="loadmore">Load More...</button>
+
+
+
+  </section>
+  <script>
+    const loadmore = document.querySelector('#loadmore');
+        let currentItems = 2;
+        loadmore.addEventListener('click', (e) => {
+            const elementList = [...document.querySelectorAll('.list .list-element')];
+            for (let i = currentItems; i < currentItems + 2; i++) {
+                if (elementList[i]) {
+                    elementList[i].style.display = 'block';
+                }
+            }
+            currentItems += 2;
+    
+            // Load more button will be hidden after list fully loaded
+            if (currentItems >= elementList.length) {
+                event.target.style.display = 'none';
+            }
+        })
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
